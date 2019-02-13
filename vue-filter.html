@@ -28,8 +28,9 @@
 		var dt = new Date(datestr);
 
 		var y= dt.getFullYear();
-		var m= dt.getMonth() + 1;
-		var d= dt.getDay();
+		//时间不够两位前面补0
+		var m= (dt.getMonth() + 1).toString().padStart(2, '0');
+		var d= (dt.getDay()).toString().padStart(2, '0');
 
 		return `${y}-${m}-${d}`
 	})
@@ -46,11 +47,12 @@
 		},
 
 		//定义私有的过滤器
-		filters: {
+		/**filters: {
 			dateFormate: function(datestr){
 				//此处为具体的实现代码，但是过滤器的使用采取的是就近原则，即如果过滤名称一样，会先执行私有过滤器
 			}
 		}
+		*/
 
 	})
 </script>
