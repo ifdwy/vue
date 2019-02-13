@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue中过滤器 的使用</title>
+	<script src="https://unpkg.com/vue"></script>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+</head>
+<body>
+	<div id="test">
+		<p>{{ msg | msgFilter('新增加的dsdsd') | filter2 }}</p>
+
+		<p>{{ date | dateFormate }}</p>
+	</div>
+
+
+<script>
+
+	Vue.filter('msgFilter', function(msg,){
+		return msg.replace(/fs/g, '替换')
+	}),
+	//定义第二个过滤器
+	Vue.filter('filter2', function(msg){
+		return msg+'=============='
+	}),
+
+	//全局过滤器，把时间格式化
+	Vue.filter('dateFormate', function(datestr){
+		var dt = new Date(datestr);
+
+		var y= dt.getFullYear();
+		var m= dt.getMonth() + 1;
+		var d= dt.getDay();
+
+		return `${y}-${m}-${d}`
+	})
+
+	new Vue({
+		el:"#test",
+		data: {
+			msg: "fsdfsfsdf",
+			date: new Date(),
+		},
+
+		methods: {
+
+		}
+
+	})
+</script>
+
+</body>
+</html>
