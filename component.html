@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue 组件的创建</title>
+	<script src="https://unpkg.com/vue"></script>
+	<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+
+
+</head>
+<body>
+
+	<div id="test">
+		
+		<my-coml></my-coml>
+
+		<my-coml2></my-coml2>
+
+		<mycoml3></mycoml3>
+
+		<login></login>
+
+	</div>
+
+	<template id="temp">
+		<div>
+		<h3>{{msg}}</h3>
+		<p>sdfsf</p>
+		</div>
+	</template>
+
+
+<script>
+	//创建组件的方式：1、使用Vue.extend来创建全局的vue组件
+	var coml= Vue.extend({
+		template: '<h3>使用Vue.extend来创建全局的vue组件</h3>'
+	})
+	//1.2、使用Vue.component（’组件名称‘，创建出来的组件模板对象）
+	Vue.component('myComl',coml);
+
+
+	//创建组件的方式：2、使用Vue.component来创建全局的vue组件
+	Vue.component('myComl2', {
+		template: "<h3>使用Vue.component来创建全局的vue组件</h3>"
+	}),
+
+	//创建组件的方式：3、通过template元素，在外部定义的组件结构，这个方式，有代码的提示和高亮
+	Vue.component('mycoml3', {
+		template: "#temp",
+		data: function(){
+			return{
+				msg: '这是组件中的data'
+			}
+		}
+	}),
+
+	new Vue({
+		el: "#test",
+		data:{
+			
+		},
+
+		components: {//自定义私有的组件
+			login: {
+				template: '<h1>这是一个私有的组件</h1>'
+			}
+		}
+	})
+</script>
+
+
+</body>
+</html>
