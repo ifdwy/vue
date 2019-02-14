@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue 组件的创建</title>
+	<script src="https://unpkg.com/vue"></script>
+	<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+
+
+</head>
+<body>
+	<div id="test">
+		<a href="" @click.prevent="flag=true">登录</a>
+		<a href="" @click.prevent="flag=false">注册</a>
+		
+		<template id="login" v-if="flag">
+			<div>登录组件</div>
+		</template>
+
+		<template id="register" v-else="flag">
+			<div>注册组件</div>
+		</template>
+
+	</div>
+
+<script>
+	Vue.component('login', {
+		template: "#login"
+	}),
+
+	Vue.component('register', {
+		template: "#register"
+	}),
+
+	new Vue({
+		el: "#test",
+		data:{
+			flag: true,
+		}
+	})
+</script>
+
+
+</body>
+</html>
