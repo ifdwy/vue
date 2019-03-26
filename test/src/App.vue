@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <div class="header">消息列表</div>   
+  <div class="header">{{$route.meta.title}}</div>   
     <router-view></router-view>
       <div class="nav">
         <router-link class="nav-item" to="/message">消息</router-link>
